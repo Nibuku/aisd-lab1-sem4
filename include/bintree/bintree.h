@@ -17,21 +17,26 @@ struct Node {
 
 
 class Binary_tree {
-	Node* root;
-	int m_size;
-	void print_tree(Node*);
-	void delete_tree(Node*);
-	void copy_tree(Node*);
+	Node* _root;
+	int _size;
+	void clear(Node* curr);
+
 
 public:
+	Node* get_root() const;
+	int get_size() const;
+
 	Binary_tree();
 	Binary_tree(int key);
 	Binary_tree(const Binary_tree& other);
 	~Binary_tree();
+
+	void print_tree(Node* root);
+	void copy_tree(Node* root);
+
 	Binary_tree& operator=(const Binary_tree& other);
 	void print();
 	bool contains(int key);
-	void insert(int key);
-	void erase(int key);
-	int size();
+	bool insert(int key);
+	bool erase(int key);
 };
