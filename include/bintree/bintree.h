@@ -19,9 +19,7 @@ struct Node {
 class Binary_tree {
 	Node* _root;
 	int _size;
-	void clear(Node* curr);
-
-
+	
 public:
 	Node* get_root() const;
 	int get_size() const;
@@ -30,9 +28,9 @@ public:
 	Binary_tree(int key);
 	Binary_tree(const Binary_tree& other);
 	~Binary_tree();
-
+	void clear(Node* root);
 	void print_tree(Node* root);
-	void copy_tree(Node* root);
+	Node* copy_tree(Node* root);
 
 	Binary_tree& operator=(const Binary_tree& other);
 	void print();
