@@ -30,11 +30,16 @@ Binary_tree::Binary_tree() {
 }
 
 void Binary_tree::clear(Node* root){ 
-	if (root) {
+	if (!root) {
+		return;
+	}
+	if (root->left && root->right) {
 		clear(root->left);
 		clear(root->right);
 		delete root;
+		root=nullptr;
 	}
+	
 }
 
 Binary_tree::Binary_tree(int key) {
@@ -136,6 +141,42 @@ bool Binary_tree::contains(int key) {
 			tmp = tmp->left;
 		else
 			tmp = tmp->right;
+	}
+	return false;
+}
+
+
+bool _erase(Node* current, int key) {
+	if (!current) {
+		return false;
+	}
+	if (current->data == key) {
+		if (!current->left) {
+			Node* right_node = current->right;
+			delete current;
+			current = right_node;
+			return true;
+		}
+		if (!current->right) {
+			Node* left_node = current->left;
+			delete current;
+			current = left_node;
+			return true;
+		}
+		else {
+			Node* min_element = current->right;
+			while (min_element->left) {
+				min_element = min_element->left;
+			}
+			current->data = min_element->data;
+			return _erase(current->right, min_element->data);
+		}
+	}
+	if (current->data > key) {
+		return _erase(current->left, key);
+	}
+	if (current->data < key) {
+		return _erase(current->right, key);
 	}
 	return false;
 }

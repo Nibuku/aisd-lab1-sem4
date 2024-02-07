@@ -28,13 +28,16 @@ public:
 	Binary_tree(int key);
 	Binary_tree(const Binary_tree& other);
 	~Binary_tree();
+
 	void clear(Node* root);
 	void print_tree(Node* root);
 	Node* copy_tree(Node* root);
 
+
 	Binary_tree& operator=(const Binary_tree& other);
 	void print();
 	bool contains(int key);
+	bool erase(Node* root, int key);
 	bool insert(int key);
-	bool erase(int key);
+	
 };

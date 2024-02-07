@@ -114,3 +114,25 @@ using namespace std;
 	 cout<<"Contains 5?: "<<tree_one.contains(5)<<endl;
 	 cout << "Contains 13?: " << tree_one.contains(13) << endl;
  }
+
+ TEST(Binary_tree, erase_test) {
+	 Binary_tree tree_one = Binary_tree(16);
+	 tree_one.insert(14);
+	 tree_one.insert(17);
+	 tree_one.insert(2);
+	 tree_one.insert(0);
+	 tree_one.insert(13);
+	 tree_one.insert(10);
+	 tree_one.insert(-7);
+	 cout << "Size: " << tree_one.get_size() << endl;
+	 cout << "original tree: ";
+	 tree_one.print();
+	 cout << endl;
+	 //cout << "Delete 5?: " << tree_one.erase(tree_one.get_root(), 5)<< endl;
+	 //cout << "new tree: ";
+	 //tree_one.print();
+	 //cout << endl;
+	 //cout << "Delete 13?: " << tree_one.erase(tree_one.get_root(), 13) << endl;
+	 //cout << tree_one.get_size();
+	 //tree_one.print();
+ }
