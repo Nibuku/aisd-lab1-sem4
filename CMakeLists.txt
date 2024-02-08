@@ -18,7 +18,7 @@ if(MSVC)
 endif()
 
 # Объявляем библиотеку
-add_library(bintree SHARED "include/bintree/bintree.h" "src/bintree.cc")
+add_library(bintree SHARED "include/bintree/bintree.h" "src/bintree.cc" )
 target_include_directories(bintree PUBLIC "include")
 
 # Подключаем googletest
@@ -30,4 +30,8 @@ FetchContent_MakeAvailable(googletest)
 # Объявляем тесты
 add_executable(bintree_tests "tests/bintree_tests.cc")
 target_link_libraries(bintree_tests bintree GTest::gtest_main)
+add_executable(task "src/task.cc")
+add_executable(stats "src/stats.cc")
+target_link_libraries(task bintree)
+target_link_libraries(stats bintree)
 

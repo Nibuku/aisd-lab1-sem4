@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-
 #include <bintree/bintree.h>
 
 using namespace std;
@@ -140,3 +139,5 @@ using namespace std;
 	 cout << "New size: " << tree_one.get_size() << endl;
 	 tree_one.print();
  }
+
+

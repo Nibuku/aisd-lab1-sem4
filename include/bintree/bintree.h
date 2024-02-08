@@ -1,8 +1,5 @@
 #pragma once
-#include <cmath>
-#include <stdexcept>
 #include <iostream>
-#include <random>
 
 
 using namespace std;

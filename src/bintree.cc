@@ -1,6 +1,7 @@
 #include <bintree/bintree.h>
 
 
+
 Node::Node() {
 	data = 0;
 	left = nullptr;
@@ -33,12 +34,11 @@ void Binary_tree::clear(Node* root){
 	if (!root) {
 		return;
 	}
-	if (root->left && root->right) {
-		clear(root->left);
-		clear(root->right);
-		delete root;
-		root=nullptr;
-	}
+	clear(root->left);
+	clear(root->right);
+	delete root;
+	root=nullptr;
+
 	
 }
 
@@ -49,11 +49,9 @@ Binary_tree::Binary_tree(int key) {
 
 
 Binary_tree::~Binary_tree() {
-	if (_root != nullptr) {
 		clear(_root);
-	}
-	_root = nullptr;
-	_size = 0;
+		_root = nullptr;
+		_size = 0;
 }
 
 bool Binary_tree::insert(int key) {
@@ -98,12 +96,9 @@ Node* Binary_tree::copy_tree(Node* root) {
 
 Binary_tree& Binary_tree::operator=(const Binary_tree& other) {
 	if (this != &other) {
-		// очищаем текущее дерево
 		clear(other._root);
-		// копируем корень дерева
 		if (other._root != nullptr)
 			_root = new Node(*other._root);
-		// копируем остальные узлы дерева
 		copy_tree(other._root);
 	}
 	return *this;
@@ -194,3 +189,7 @@ bool Binary_tree::erase( int key) {
 	erase(replace_value);
 	tmp->data = replace_value;
 }
+
+
+
+
