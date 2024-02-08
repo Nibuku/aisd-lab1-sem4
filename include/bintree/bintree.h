@@ -37,7 +37,7 @@ public:
 	Binary_tree& operator=(const Binary_tree& other);
 	void print();
 	bool contains(int key);
-	bool erase(Node* root, int key);
+	bool erase(int key);
 	bool insert(int key);
 	
 };

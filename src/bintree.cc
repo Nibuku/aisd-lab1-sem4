@@ -116,6 +116,7 @@ void Binary_tree::print_tree(Node* root) {
 	print_tree(root->left);
 	cout << root->data<<" ";
 	print_tree(root->right);
+
 }
 
 void Binary_tree::print() {
@@ -146,37 +147,50 @@ bool Binary_tree::contains(int key) {
 }
 
 
-bool _erase(Node* current, int key) {
-	if (!current) {
+bool Binary_tree::erase( int key) {
+	Node* tmp = _root;
+	Node* parent = nullptr;
+	while (tmp && tmp->data != key)
+	{
+		parent = tmp;
+		if (tmp->data > key)
+		{
+			tmp = tmp->left;
+		}
+		else
+		{
+			tmp = tmp->right;
+		}
+	}
+	if (!tmp)
 		return false;
+	if (tmp->left == nullptr)
+	{
+			
+		if (parent && parent->left == tmp)
+			parent->left = tmp->right;
+		if (parent && parent->right == tmp)
+			parent->right = tmp->right;
+		--_size;
+		delete tmp;
+		return true;
 	}
-	if (current->data == key) {
-		if (!current->left) {
-			Node* right_node = current->right;
-			delete current;
-			current = right_node;
-			return true;
-		}
-		if (!current->right) {
-			Node* left_node = current->left;
-			delete current;
-			current = left_node;
-			return true;
-		}
-		else {
-			Node* min_element = current->right;
-			while (min_element->left) {
-				min_element = min_element->left;
-			}
-			current->data = min_element->data;
-			return _erase(current->right, min_element->data);
-		}
+	if (tmp->right == nullptr)
+	{
+			
+		if (parent && parent->left == tmp)
+			parent->left = tmp->left;
+		if (parent && parent->right == tmp)
+			parent->right = tmp->left;
+		--_size;
+		delete tmp;
+		return true;
 	}
-	if (current->data > key) {
-		return _erase(current->left, key);
-	}
-	if (current->data < key) {
-		return _erase(current->right, key);
-	}
-	return false;
+
+	Node* replace = tmp->right;
+	while (replace->left)
+		replace = replace->left;
+	int replace_value = replace->data;
+	erase(replace_value);
+	tmp->data = replace_value;
 }
