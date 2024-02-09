@@ -138,6 +138,14 @@ using namespace std;
 	 cout << "Delete 0?: " << tree_one.erase(0) << endl;
 	 cout << "New size: " << tree_one.get_size() << endl;
 	 tree_one.print();
+	 cout << endl;
+	 cout << "Delete 13?: " << tree_one.erase(13) << endl;
+	 cout << "New size: " << tree_one.get_size() << endl;
+	 tree_one.print();
+	 cout << endl;
+	 cout << "Delete 2?: " << tree_one.erase(2) << endl;
+	 cout << "New size: " << tree_one.get_size() << endl;
+	 tree_one.print();
  }
 
 

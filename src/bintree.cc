@@ -1,7 +1,6 @@
 #include <bintree/bintree.h>
 
 
-
 Node::Node() {
 	data = 0;
 	left = nullptr;
@@ -13,7 +12,6 @@ Node::Node(int key) {
 	left = nullptr;
 	right = nullptr;
 }
-
 
 Node* Binary_tree::get_root() const
 {
@@ -37,16 +35,13 @@ void Binary_tree::clear(Node* root){
 	clear(root->left);
 	clear(root->right);
 	delete root;
-	root=nullptr;
-
-	
+	root=nullptr;	
 }
 
 Binary_tree::Binary_tree(int key) {
 	_root = new Node(key);
 	_size = 1;
 }
-
 
 Binary_tree::~Binary_tree() {
 		clear(_root);
@@ -107,7 +102,6 @@ Binary_tree& Binary_tree::operator=(const Binary_tree& other) {
 void Binary_tree::print_tree(Node* root) {
 	if (!root)
 		return;
-		//cout << root->data;
 	print_tree(root->left);
 	cout << root->data<<" ";
 	print_tree(root->right);
@@ -118,14 +112,12 @@ void Binary_tree::print() {
 	if (!_root)
 		return;
 	print_tree(_root);
-
 }
 
 Binary_tree::Binary_tree(const Binary_tree& other) {
 	_root = nullptr;
 	_root=copy_tree(other.get_root());
 }
-
 
 bool Binary_tree::contains(int key) {
 	Node* tmp = _root;
@@ -140,7 +132,6 @@ bool Binary_tree::contains(int key) {
 	}
 	return false;
 }
-
 
 bool Binary_tree::erase( int key) {
 	Node* tmp = _root;
@@ -159,7 +150,7 @@ bool Binary_tree::erase( int key) {
 	}
 	if (!tmp)
 		return false;
-	if (tmp->left == nullptr)
+	if (!tmp->left)
 	{
 			
 		if (parent && parent->left == tmp)
@@ -170,7 +161,7 @@ bool Binary_tree::erase( int key) {
 		delete tmp;
 		return true;
 	}
-	if (tmp->right == nullptr)
+	if (!tmp->right)
 	{
 			
 		if (parent && parent->left == tmp)
@@ -188,8 +179,5 @@ bool Binary_tree::erase( int key) {
 	int replace_value = replace->data;
 	erase(replace_value);
 	tmp->data = replace_value;
+	return true;
 }
-
-
-
-

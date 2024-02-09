@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 
-
 using namespace std;
 
 struct Node {
@@ -29,7 +28,6 @@ public:
 	void clear(Node* root);
 	void print_tree(Node* root);
 	Node* copy_tree(Node* root);
-
 
 	Binary_tree& operator=(const Binary_tree& other);
 	void print();
