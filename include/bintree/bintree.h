@@ -5,9 +5,9 @@ using namespace std;
 
 struct Node {
 	int data;
-	int count;
 	Node* left; 
 	Node* right;
+	Node();
 	Node(int key);
 };
 
@@ -18,7 +18,7 @@ class Binary_tree {
 
 	void clear(Node* root);
 	void print_tree(Node* root);
-	Node* copy_tree(Node* root, Node* other);
+	Node* copy_tree(Node* root);
 	
 public:
 	Node* get_root() const;
@@ -35,5 +35,4 @@ public:
 	bool erase(int key);
 	bool insert(int key);
 	
-	int count(int key);
 };
