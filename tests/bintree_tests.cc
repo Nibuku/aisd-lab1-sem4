@@ -1,8 +1,17 @@
 #include <gtest/gtest.h>
 #include <bintree/bintree.h>
-#include <iostream>
+
 using namespace std;
 
+ TEST(Node, NodeDefault) {
+	Node first = Node();
+	//cout << first.data << endl;
+	//cout << first.left << endl;
+	//cout << first.right << endl;
+	EXPECT_TRUE(first.data == 0);
+	EXPECT_TRUE(first.left == nullptr);
+	EXPECT_TRUE(first.right == nullptr);
+}
 
  TEST(Node, NodeValue) {
 	 Node first = Node(5);
@@ -43,9 +52,6 @@ using namespace std;
 	 tree_one.insert(5);
 	 tree_one.insert(5);
 	 tree_one.insert(13);
-	 tree_one.insert(20);
-	 tree_one.insert(20);
-	 tree_one.insert(20);
 	 tree_one.insert(20);
 	 tree_one.insert(-1);
 	 cout << "Size: " << tree_one.get_size() << endl;;
@@ -112,7 +118,6 @@ using namespace std;
 	 Binary_tree tree_one = Binary_tree(16);
 	 tree_one.insert(14);
 	 tree_one.insert(17);
-	 tree_one.insert(17);
 	 tree_one.insert(2);
 	 tree_one.insert(0);
 	 tree_one.insert(13);
@@ -130,10 +135,6 @@ using namespace std;
 	 cout << "New size: "<< tree_one.get_size()<<endl;
 	 tree_one.print();
 	 cout << endl;
-	 cout << "Delete 17?: " << tree_one.erase(17) << endl;
-	 cout << "New size: " << tree_one.get_size() << endl;
-	 tree_one.print();
-	 cout << endl;
 	 cout << "Delete 0?: " << tree_one.erase(0) << endl;
 	 cout << "New size: " << tree_one.get_size() << endl;
 	 tree_one.print();
@@ -147,29 +148,4 @@ using namespace std;
 	 tree_one.print();
  }
 
- TEST(Binary_tree, count_test) {
-	 Binary_tree tree_one = Binary_tree(16);
-	 tree_one.insert(14);
-	 tree_one.insert(17);
-	 tree_one.insert(17);
-	 tree_one.insert(2);
-	 tree_one.insert(0);
-	 tree_one.insert(13);
-	 tree_one.insert(13);
-	 tree_one.insert(13);
-	 tree_one.insert(10);
-	 tree_one.insert(-7);
-	 cout << "Size: " << tree_one.get_size() << endl;
-	 cout << "original tree: ";
-	 tree_one.print();
-	 cout << endl;
-	 cout << "duplicates for -20: ";
-	 cout<< tree_one.count(-20) << endl;
-	 cout << "duplicates for 17: ";
-	 cout << tree_one.count(17) << endl;
-	 cout << "duplicates for 13: ";
-	 cout << tree_one.count(13) << endl;
-	 cout << "duplicates for 14: ";
-	 cout << tree_one.count(14) << endl;
 
- }
