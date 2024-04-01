@@ -7,7 +7,6 @@ struct Node {
 	int data;
 	Node* left; 
 	Node* right;
-	Node();
 	Node(int key);
 };
 
@@ -18,7 +17,7 @@ class Binary_tree {
 
 	void clear(Node* root);
 	void print_tree(Node* root);
-	Node* copy_tree(Node* root);
+	Node* copy_tree(Node* root, Node* other);
 	
 public:
 	Node* get_root() const;

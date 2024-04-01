@@ -3,15 +3,6 @@
 
 using namespace std;
 
- TEST(Node, NodeDefault) {
-	Node first = Node();
-	//cout << first.data << endl;
-	//cout << first.left << endl;
-	//cout << first.right << endl;
-	EXPECT_TRUE(first.data == 0);
-	EXPECT_TRUE(first.left == nullptr);
-	EXPECT_TRUE(first.right == nullptr);
-}
 
  TEST(Node, NodeValue) {
 	 Node first = Node(5);

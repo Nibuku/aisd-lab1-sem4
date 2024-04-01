@@ -1,12 +1,6 @@
 #include <bintree/bintree.h>
 
 
-Node::Node() {
-	data = 0;
-	left = nullptr;
-	right = nullptr;
-}
-
 Node::Node(int key) {
 	data = key;
 	left = nullptr;
@@ -23,10 +17,7 @@ int Binary_tree::get_size() const
 	return _size;
 }
 
-Binary_tree::Binary_tree() {
-	_root = new Node();
-	_size = 1;
-}
+Binary_tree::Binary_tree(): _root(nullptr), _size(0) {}
 
 void Binary_tree::clear(Node* root){ 
 	if (!root) {
@@ -80,21 +71,20 @@ bool Binary_tree::insert(int key) {
 	return false;
 }
 
-Node* Binary_tree::copy_tree(Node* root) {
-	insert(root->data);
-	if (root->left)
-		copy_tree(root->left);
-	if (root->right)
-		copy_tree(root->right);
-	return this->_root;
+Node* Binary_tree::copy_tree(Node* root, Node* other) {
+	if (!other)
+		return nullptr;
+
+	root = new Node(other->data);
+	root->left = copy_tree(root->left, other->left);
+	root->right = copy_tree(root->right, other->right);
+	return root;
 }
 
 Binary_tree& Binary_tree::operator=(const Binary_tree& other) {
 	if (this != &other) {
 		clear(other._root);
-		if (other._root != nullptr)
-			_root = new Node(*other._root);
-		copy_tree(other._root);
+		copy_tree(_root, other._root);
 	}
 	return *this;
 }
@@ -102,8 +92,9 @@ Binary_tree& Binary_tree::operator=(const Binary_tree& other) {
 void Binary_tree::print_tree(Node* root) {
 	if (!root)
 		return;
+	cout << root->data << " ";
 	print_tree(root->left);
-	cout << root->data<<" ";
+	
 	print_tree(root->right);
 
 }
@@ -116,7 +107,7 @@ void Binary_tree::print() {
 
 Binary_tree::Binary_tree(const Binary_tree& other) {
 	_root = nullptr;
-	_root=copy_tree(other.get_root());
+	_root=copy_tree(_root, other.get_root());
 }
 
 bool Binary_tree::contains(int key) {
